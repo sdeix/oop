@@ -53,5 +53,28 @@ class Lesson extends Post
     }
 }
 
-$lesson = new Lesson('Заголовок', 'Текст', 'Домашка');
-var_dump($lesson);
+class PaidLesson extends Lesson
+{
+    private $price;
+
+    public function __construct(string $title, string $text, string $homework, float $price)
+    {
+        parent::__construct($text, $title, $homework);
+        $this->price = $price;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+}
+
+$paidLesson = new PaidLesson('Урок о наследовании PHP', 'лол, кек, чебурек',
+    'Домашка: ложитесь спать, утро вечера мудренее', 99.90);
+var_dump($paidLesson);
+

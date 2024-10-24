@@ -22,3 +22,27 @@ abstract class HumanAbstract
         return $this->getGreetings() . '! ' . $this->getMyNameIs() . ' ' . $this->getName() . '.';
     }
 }
+
+class RussianHuman extends HumanAbstract{
+    public function getGreetings():string{
+        return "Привет";
+    }
+    public function getMyNameIs():string{
+        return "Меня зовут ";
+    }
+}
+
+class EnglishHuman extends HumanAbstract{
+    public function getGreetings():string{
+        return "Hello ";
+    }
+    public function getMyNameIs():string{
+        return "My name is ";
+    }
+}
+
+$ru = new RussianHuman("Иван");
+$en = new EnglishHuman("Ivan");
+
+echo $ru->introduceYourself()."<br>";
+echo $en->introduceYourself()."<br>";

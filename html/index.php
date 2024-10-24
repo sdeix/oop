@@ -1,72 +1,24 @@
 <?php
 
-interface CalculateSquare
+abstract class HumanAbstract
 {
-    public function calculateSquare(): float;
-}
+    private $name;
 
-class Circle implements CalculateSquare
-{
-    const PI = 3.1416;
-
-    private $r;
-
-    public function __construct(float $r)
+    public function __construct(string $name)
     {
-        $this->r = $r;
+        $this->name = $name;
     }
 
-    public function calculateSquare(): float
+    public function getName(): string
     {
-        return self::PI * ($this->r ** 2);
+        return $this->name;
     }
-}
 
-class Rectangle
-{
-    private $x;
-    private $y;
+    abstract public function getGreetings(): string;
+    abstract public function getMyNameIs(): string;
 
-    public function __construct(float $x, float $y)
+    public function introduceYourself(): string
     {
-        $this->x = $x;
-        $this->y = $y;
-    }
-
-    public function calculateSquare(): float
-    {
-        return $this->x * $this->y;
-    }
-}
-
-class Square implements CalculateSquare
-{
-    private $x;
-
-    public function __construct(float $x)
-    {
-        $this->x = $x;
-    }
-
-    public function calculateSquare(): float
-    {
-        return $this->x ** 2;
-    }
-}
-
-$objects = [
-    new Square(5),
-    new Rectangle(2, 4),
-    new Circle(5)
-];
-
-foreach ($objects as $object) {
-    if ($object instanceof CalculateSquare) {
-        echo 'Объект класса '.get_class($object)  .'  реализует интерфейс CalculateSquare. Площадь: ' . $object->calculateSquare();
-        echo '<br>';
-    }
-    else {
-        echo 'Объект класса '.get_class($object)  .'  не реализует интерфейс CalculateSquare. Площадь: ' . $object->calculateSquare();
-        echo '<br>';
+        return $this->getGreetings() . '! ' . $this->getMyNameIs() . ' ' . $this->getName() . '.';
     }
 }

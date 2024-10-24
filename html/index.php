@@ -62,7 +62,11 @@ $objects = [
 
 foreach ($objects as $object) {
     if ($object instanceof CalculateSquare) {
-        echo 'Объект реализует интерфейс CalculateSquare. Площадь: ' . $object->calculateSquare();
+        echo 'Объект класса '.get_class($object)  .'  реализует интерфейс CalculateSquare. Площадь: ' . $object->calculateSquare();
+        echo '<br>';
+    }
+    else {
+        echo 'Объект класса '.get_class($object)  .'  не реализует интерфейс CalculateSquare. Площадь: ' . $object->calculateSquare();
         echo '<br>';
     }
 }

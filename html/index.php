@@ -1,41 +1,57 @@
 <?php
-class Cat
+
+class Post
 {
-    private $name;
-    private $color;
+    private $title;
+    private $text;
 
-    public function __construct(string $name, string $color)
+    public function __construct(string $title, string $text)
     {
-        $this->name = $name;
-        $this->color = $color;
-    }
-
-    public function sayHello()
-    {
-        echo 'Привет! Меня зовут ' . $this->name . '.';
+        $this->title = $title;
+        $this->text = $text;
     }
 
-    public function setName(string $name)
+    public function getTitle()
     {
-        $this->name = $name;
+        return $this->title;
     }
 
-    public function getName(): string
+    public function setTitle($title): void
     {
-        return $this->name;
+        $this->title = $title;
     }
-    public function getColor(): string
+
+    public function getText()
     {
-        return $this->color;
+        return $this->text;
     }
-    public function getInfo()
+
+    public function setText($text): void
     {
-        echo 'Привет! Меня зовут: '. $this->name.' цвет:'.$this->color."<br>";
+        $this->text = $text;
     }
 }
 
-$cat1 = new Cat('Снежок',' Белый');
-$cat2 = new Cat('Барсик',' Рыжий');
+class Lesson extends Post
+{
+    private $homework;
 
-$cat1->getInfo();
-$cat2->getInfo();
+    public function __construct(string $title, string $text, string $homework)
+    {
+        parent::__construct($title, $text);
+        $this->homework = $homework;
+    }
+
+    public function getHomework(): string
+    {
+        return $this->homework;
+    }
+
+    public function setHomework(string $homework): void
+    {
+        $this->homework = $homework;
+    }
+}
+
+$lesson = new Lesson('Заголовок', 'Текст', 'Домашка');
+var_dump($lesson);
